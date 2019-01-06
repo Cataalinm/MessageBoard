@@ -6,7 +6,71 @@
         xmlns:local="clr-namespace:MessageBoard"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid >
+        <Grid.Background >
+            <ImageBrush ImageSource="ChatImage.jpg" Opacity="0.60"/>
+        </Grid.Background>
+        <TextBox IsReadOnly="True" Background="Transparent" Opacity="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="Board" HorizontalAlignment="Left" Height="372" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="684"/>
+
+        <Button Content="Send&#xD;&#xA;" HorizontalAlignment="Left" Margin="699,382,0,0" Width="85" RenderTransformOrigin="-1.375,2.064" Click="Send_Click" Height="28" VerticalAlignment="Top"/>
+        <TextBox Name="Chat" HorizontalAlignment="Left" Height="23" Margin="10,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="684" />
+        <Button Name="Login" Content="Login&#xD;&#xA;" HorizontalAlignment="Left" Margin="704,5,0,0" VerticalAlignment="Top" Width="75" Height="26" Click="Login_Click"/>
+        <Button Visibility="Hidden" Name="Logout"  Content="Logout" HorizontalAlignment="Left" Margin="704,36,0,0" VerticalAlignment="Top" Width="75" Click="Logout_Click" Height="25" RenderTransformOrigin="-0.688,-0.346"/>
+        <Grid Visibility="Hidden" Name="LoginWindow"   Background="GhostWhite" HorizontalAlignment="Left" Height="203" Margin="278,104,0,0" VerticalAlignment="Top" Width="265">
+            <Button Content="Login" HorizontalAlignment="Left" Margin="97,140,0,0" VerticalAlignment="Top" Width="75" Click="Logging_Click" Height="27" RenderTransformOrigin="0.681,0.57"/>
+            <Label Content="Password: " FontSize="16" HorizontalAlignment="Left" Margin="32,88,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.586,-0.78" Width="86"/>
+            <Label Content="Username: " FontSize="16" HorizontalAlignment="Left" Margin="32,51,0,0" VerticalAlignment="Top" Width="86"/>
+            <TextBox HorizontalAlignment="Left" Name="Username" Height="32" Margin="123,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.403,0.466"/>
+            <TextBox HorizontalAlignment="Left" Name ="Password" Height="31" Margin="123,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Button Content="X" Margin="247,0,0,180" RenderTransformOrigin="-0.332,1.846" HorizontalAlignment="Left" Width="18" Click="Closelogin_Click"/>
+        </Grid>
+        <Label Visibility="Hidden" Background="Transparent" Name="Notloggederror"  FontSize="17" Content="Please log in to your account first!" HorizontalAlignment="Left" Margin="278,104,0,0" VerticalAlignment="Top" Height="33" Width="274" RenderTransformOrigin="0.58,-0.079"/>
+        <Label Visibility="Hidden" Name="Wrongdata" Background="Transparent" FontSize="18" Content="Wrong username or password" HorizontalAlignment="Left" Margin="291,97,0,0" VerticalAlignment="Top" Height="37" Width="252" />
+        <Button Name="Register" Content="Register" HorizontalAlignment="Left" Margin="704,43,0,0" VerticalAlignment="Top" Width="75" Click="Register_Click" Height="26" RenderTransformOrigin="1.908,0.808"/>
+
+        <Grid Visibility="Hidden" Background="DarkGray" Name="RegistrationWindow" HorizontalAlignment="Left" Height="299" Margin="114,62,0,0" VerticalAlignment="Top" Width="553">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="16*"/>
+                <RowDefinition Height="15*"/>
+            </Grid.RowDefinitions>
+            <Button Name="Completeregist" Content="Complete registration" HorizontalAlignment="Left" Margin="418,108.6,0,0" VerticalAlignment="Top" Width="135" Height="36" Grid.Row="1" Click="CmpReg_Click"/>
+            <Label FontSize="14" Content="First Name: " HorizontalAlignment="Left" Margin="15,46,0,0" VerticalAlignment="Top" Width="79"/>
+            <Label FontSize="14" Content="Last Name: " HorizontalAlignment="Left" Margin="282,41,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.102,0.701"/>
+            <Label FontSize="14" Content="Email adress: " HorizontalAlignment="Left" Margin="5,80,0,0" VerticalAlignment="Top" Width="89" RenderTransformOrigin="0.637,0.592"/>
+            <Label FontSize="14" Content="Date of birth: " HorizontalAlignment="Left" Margin="269,75,0,0" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.916,0.652"/>
+            <TextBox Name="FNfield" HorizontalAlignment="Left" Height="29" Margin="94,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" RenderTransformOrigin="2.402,2.801"/>
+            <TextBox Name="LNfield" HorizontalAlignment="Left" Height="29" Margin="367,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+            <TextBox Name="DoBfield" HorizontalAlignment="Left" Height="29" Margin="367,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" RenderTransformOrigin="0.527,1.408"/>
+            <TextBox Name="Emailfield" HorizontalAlignment="Left" Height="29" Margin="94,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" RenderTransformOrigin="0.121,0.76"/>
+            <Label FontSize="14" Content="Username: " HorizontalAlignment="Left" Margin="11,109,0,0" VerticalAlignment="Top" Height="35" RenderTransformOrigin="1.893,0.498" Width="83"/>
+            <Label FontSize="14" Content="Password: " HorizontalAlignment="Left" Margin="287,0,0,16.4" VerticalAlignment="Bottom" RenderTransformOrigin="0.238,-0.97"/>
+            <Label FontSize="14" Content="Confirm password: " HorizontalAlignment="Left" Margin="245,140,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.478,0.175" Width="135" Grid.RowSpan="2"/>
+            <TextBox Name="UNfield" HorizontalAlignment="Left" Height="26" Margin="94,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" RenderTransformOrigin="1.001,-3.155"/>
+            <TextBox Name="Passfield" HorizontalAlignment="Left" Height="28" Margin="367,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" />
+            <TextBox Name="ConfirmPass" HorizontalAlignment="Left" Height="29" Margin="367,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" RenderTransformOrigin="0.561,0.039" Grid.RowSpan="2"/>
+            <Label Name="Mandatoryfields" Content="*All fields are mandatory!" FontSize="14" HorizontalAlignment="Left" Margin="10,90.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="206" Height="30"/>
+            <CheckBox Name="ToSPP" FontSize="14" Content="I agree to Terms of Service and Privacy Policy" HorizontalAlignment="Left" Margin="245,60,0,0" Grid.Row="1" VerticalAlignment="Top"  Height="20" Width="302"/>
+            <Label Name ="Dateformat" FontSize="14" Content="*Date of birth format is m/d/y" HorizontalAlignment="Left" Margin="10,61.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="207" Height="29"/>
+            <Label Name="Passdontmatch" Visibility="Hidden" Foreground="Red" FontSize="14" Content="*Passwords don't match!" HorizontalAlignment="Left" Margin="10,34.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="170" Height="34"/>
+            <Label Visibility="Hidden" Name="AgreeToSPP" Foreground="Red" FontSize="14" Content="*You must agree to the Terms and Conditions!" HorizontalAlignment="Left" Margin="245,84.6,-14,0" Grid.Row="1" VerticalAlignment="Top" Width="322"/>
+            <Button Content="X" HorizontalAlignment="Left" Margin="534,0,0,0" VerticalAlignment="Top" Width="19" Height="26" Click="Closeregistration_Click" RenderTransformOrigin="10.668,-5.208"/>
+        </Grid>
+        <Button Content="Exit" HorizontalAlignment="Left" Margin="704,308,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Exit_Click"/>
+        <Label Visibility="Hidden" FontSize="18" Background="Transparent" Name="Fileopeningerror" Content="File doesn't exist." HorizontalAlignment="Left" Margin="335,104,0,0" VerticalAlignment="Top" Width="162" Height="30"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="704,117,0,0" VerticalAlignment="Top" Width="75" Height="25" RenderTransformOrigin="3.449,-5.72" Click="Save_Click"/>
+        <Button Content="History" HorizontalAlignment="Left" Margin="704,154,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="History_Click"/>
+        <TextBox Visibility="Hidden" VerticalScrollBarVisibility="Auto" Name="Historyboard" IsReadOnly="True" HorizontalAlignment="Left" Height="311" Margin="145,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="499" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.147"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <Button Visibility="Hidden" Name="Closehistory" Content="Close History" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="554,21,0,0" Click="Closehistory_Click"/>
+        <Button Content="Delete History" HorizontalAlignment="Left" Margin="699,197,0,0" VerticalAlignment="Top" Width="85" Height="25" RenderTransformOrigin="0.641,0.224" Click="Button_Click"/>
+
     </Grid>
 </Window>
