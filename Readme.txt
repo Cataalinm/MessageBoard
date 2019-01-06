@@ -1,0 +1,1 @@
+An account with the username "admin" and password "admin" is provided by default
