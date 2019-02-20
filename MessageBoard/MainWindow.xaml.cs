@@ -57,7 +57,6 @@ namespace MessageBoard
             Login.Visibility = Visibility.Visible;
             Register.Visibility=Visibility.Visible;
             Logout.Visibility = Visibility.Collapsed;
-            Board.Text = "";
             logged = 0;
         }
 
@@ -91,7 +90,7 @@ namespace MessageBoard
                     }
                 } 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Fileopeningerror.Visibility = Visibility.Visible;
             }
@@ -168,7 +167,7 @@ namespace MessageBoard
                             ConfirmPass.Text = "";
                             ToSPP.IsChecked = false;
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             Dateformat.Foreground = Brushes.Red;
                         }
@@ -229,7 +228,7 @@ namespace MessageBoard
                     Closehistory.Visibility = Visibility.Visible;
                     Fileopeningerror.Visibility = Visibility.Collapsed;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Fileopeningerror.Visibility = Visibility.Visible;
                     DispatcherTimer timer = new DispatcherTimer();
@@ -287,7 +286,7 @@ namespace MessageBoard
         }
 
         //Button for deleting the file containing the history saved. 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void DeleteHistory_Click(object sender, RoutedEventArgs e)
         {
             if (logged == 1)
             {
@@ -302,6 +301,30 @@ namespace MessageBoard
                 timer.Interval = new TimeSpan(0, 0, 2);
                 timer.Start();
             }
+        }
+
+        private void ViewIndexWindow_Click(object sender, RoutedEventArgs e)
+        {
+            IndexWindow.Visibility = Visibility.Visible;  
+        }
+
+        //Index counting is from top to bottom starting with 0. The post with index "0" is the last one written on the board. 
+        private void GetPost_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(Board.GetLineText(Convert.ToInt32(Index.Text)));
+                IndexWindow.Visibility = Visibility.Collapsed;
+            }
+            catch(Exception)
+            { 
+                MessageBox.Show("Index out of bonds");
+            }
+        }
+
+        private void CloseIndexWindow_Click(object sender, RoutedEventArgs e)
+        {
+            IndexWindow.Visibility = Visibility.Collapsed;
         }
     }
 }

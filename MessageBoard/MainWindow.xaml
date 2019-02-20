@@ -57,7 +57,7 @@
         </Grid>
         <Button Content="Exit" HorizontalAlignment="Left" Margin="704,308,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Exit_Click"/>
         <Label Visibility="Hidden" FontSize="18" Background="Transparent" Name="Fileopeningerror" Content="File doesn't exist." HorizontalAlignment="Left" Margin="335,104,0,0" VerticalAlignment="Top" Width="162" Height="30"/>
-        <Button Content="Save to History" HorizontalAlignment="Left" Margin="699,117,-0.4,0" VerticalAlignment="Top" Width="95" Height="25" RenderTransformOrigin="3.449,-5.72" Click="Save_Click"/>
+        <Button Content="Save to History" HorizontalAlignment="Left" Margin="694,117,-0.4,0" VerticalAlignment="Top" Width="100" Height="25" RenderTransformOrigin="3.449,-5.72" Click="Save_Click"/>
         <Button Content="History" HorizontalAlignment="Left" Margin="704,154,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="History_Click"/>
         <TextBox Visibility="Hidden" VerticalScrollBarVisibility="Auto" Name="Historyboard" IsReadOnly="True" HorizontalAlignment="Left" Height="311" Margin="145,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="499" RenderTransformOrigin="0.5,0.5">
             <TextBox.RenderTransform>
@@ -70,7 +70,14 @@
             </TextBox.RenderTransform>
         </TextBox>
         <Button Visibility="Hidden" Name="Closehistory" Content="Close History" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="554,21,0,0" Click="Closehistory_Click"/>
-        <Button Content="Delete History" HorizontalAlignment="Left" Margin="699,197,0,0" VerticalAlignment="Top" Width="85" Height="25" RenderTransformOrigin="0.641,0.224" Click="Button_Click"/>
+        <Button Content="Delete History" HorizontalAlignment="Left" Margin="699,197,0,0" VerticalAlignment="Top" Width="85" Height="25" RenderTransformOrigin="0.641,0.224" Click="DeleteHistory_Click"/>
+        <Button Content="Get post&#xD;&#xA; by index" HorizontalAlignment="Left" Margin="705,242,0,0" VerticalAlignment="Top" Width="74" Click="ViewIndexWindow_Click" Height="35"/>
+        <Grid Name="IndexWindow" Visibility="Hidden" Background="DarkGray" HorizontalAlignment="Left" Height="140" Margin="300,117,0,0" VerticalAlignment="Top" Width="221">
+            <TextBox x:Name="Index" HorizontalAlignment="Left" Height="23" Margin="132,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="76"/>
+            <Button Content="Get Post" HorizontalAlignment="Left" Margin="77,82,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.39,-0.339" Click="GetPost_Click"/>
+            <Label Content="Enter index of post: " HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="122"/>
+            <Button Content="X" Margin="201,0,0,0" VerticalAlignment="Top" Height="21" RenderTransformOrigin="1.337,0.188" Click="CloseIndexWindow_Click"/>
+        </Grid>
 
     </Grid>
 </Window>
