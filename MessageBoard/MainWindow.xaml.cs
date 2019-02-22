@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 //using System.Windows.Shapes;
 using System.Windows.Threading;
 using Classes;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 
 namespace MessageBoard
@@ -26,10 +28,15 @@ namespace MessageBoard
     public partial class MainWindow : Window 
     {
         int logged = 0;
+        [DllImport("Kernel32")]
+        public static extern void AllocConsole();
 
+        [DllImport("Kernel32")]
+        public static extern void FreeConsole();
         public MainWindow()
         {
             InitializeComponent();
+            AllocConsole();
         }
         Person newperson = new Person();
         User newuser = new User();
@@ -37,6 +44,7 @@ namespace MessageBoard
         // When the "Send" button is clicked, the text in the textbox near to the button will be sent on to the Board. 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
+           
             if (Username.Text.Length == 0)
             {
                 Notloggederror.Visibility = Visibility.Visible;
@@ -46,6 +54,7 @@ namespace MessageBoard
                 Board.Text = Username.Text + ": " + Chat.Text + '\n' + Board.Text;
                 //Clear the text that was written in the textbox and sent to the board. 
                 Chat.Text = "";
+                Console.WriteLine("There is a new message on the board.");
             }
         }
 
