@@ -18,7 +18,8 @@ using System.Windows.Threading;
 using Classes;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
-
+using System.Collections.Specialized;
+using System.Text.RegularExpressions;
 
 namespace MessageBoard
 {
@@ -334,6 +335,49 @@ namespace MessageBoard
         private void CloseIndexWindow_Click(object sender, RoutedEventArgs e)
         {
             IndexWindow.Visibility = Visibility.Collapsed;
+        }
+
+        //Button to show the interface for finding an author's posts.
+        private void Findpostsbyauthor_Click(object sender, RoutedEventArgs e)
+        {
+            UserGrid.Visibility = Visibility.Visible;
+            FindPostLabel.Visibility = Visibility.Visible;
+            FindPosts.Visibility = Visibility.Visible;
+            Postauthor.Visibility = Visibility.Visible;
+        }
+
+        //Button to hide the interface for finding an author's posts. 
+        private void CloseUB_Click(object sender, RoutedEventArgs e)
+        {
+            UserGrid.Visibility = Visibility.Collapsed;
+            UserBoard.Text = "";
+            Postauthor.Text = "";
+        }
+
+        //The text on the board is divided into lines that are then didved into words.
+        //Using a query I am verifying if the text contains the specified author and show his messages if a match is found.
+        private void  FindPosts_Click(object sender, RoutedEventArgs e)
+        {
+            FindPostLabel.Visibility = Visibility.Collapsed;
+            FindPosts.Visibility = Visibility.Collapsed;
+            Postauthor.Visibility = Visibility.Collapsed;
+            string[] lines = Board.Text.Split('\n');
+            string[] Author = new string[] { Postauthor.Text + ":" };
+            IEnumerable<String> Postquery = from line in lines
+                        let w = line.Split(' ')
+                        where w.Distinct().Intersect(Author).Count() == Author.Count()
+                        select line;
+            foreach (string str in Postquery)
+            { 
+                if (!Postquery.Any())
+                {
+                    MessageBox.Show("There is no post by this author");
+                }
+                else
+                {
+                    UserBoard.Text = UserBoard.Text + str + '\n';
+                }
+            }
         }
     }
 }

@@ -26,7 +26,7 @@
         </Grid>
         <Label Visibility="Hidden" Background="Transparent" Name="Notloggederror"  FontSize="15" Content="Please log in to your account first!" HorizontalAlignment="Left" Margin="278,104,0,0" VerticalAlignment="Top" Height="33" Width="243" RenderTransformOrigin="0.58,-0.079"/>
         <Label Visibility="Hidden" Name="Wrongdata" Background="Transparent" FontSize="17" Content="Wrong username or password" HorizontalAlignment="Left" Margin="278,97,0,0" VerticalAlignment="Top" Height="37" Width="243" />
-        <Button Name="Register" Content="Register" HorizontalAlignment="Left" Margin="704,43,0,0" VerticalAlignment="Top" Width="75" Click="Register_Click" Height="26" RenderTransformOrigin="1.908,0.808"/>
+        <Button Name="Register" Content="Register" HorizontalAlignment="Left" Margin="704,36,0,0" VerticalAlignment="Top" Width="75" Click="Register_Click" Height="26" RenderTransformOrigin="1.908,0.808"/>
 
         <Grid Visibility="Hidden" Background="DarkGray" Name="RegistrationWindow" HorizontalAlignment="Left" Height="299" Margin="114,62,0,0" VerticalAlignment="Top" Width="553">
             <Grid.RowDefinitions>
@@ -55,10 +55,10 @@
             <Label Visibility="Hidden" Name="AgreeToSPP" Foreground="Red" FontSize="14" Content="*You must agree to the Terms and Conditions!" HorizontalAlignment="Left" Margin="245,84.6,-14,0" Grid.Row="1" VerticalAlignment="Top" Width="322"/>
             <Button Content="X" HorizontalAlignment="Left" Margin="534,0,0,0" VerticalAlignment="Top" Width="19" Height="26" Click="Closeregistration_Click" RenderTransformOrigin="10.668,-5.208"/>
         </Grid>
-        <Button Content="Exit" HorizontalAlignment="Left" Margin="704,308,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Exit_Click"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Margin="704,344,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Exit_Click"/>
         <Label Visibility="Hidden" FontSize="18" Background="Transparent" Name="Fileopeningerror" Content="File doesn't exist." HorizontalAlignment="Left" Margin="335,104,0,0" VerticalAlignment="Top" Width="162" Height="30"/>
-        <Button Content="Save to History" HorizontalAlignment="Left" Margin="694,117,-0.4,0" VerticalAlignment="Top" Width="100" Height="25" RenderTransformOrigin="3.449,-5.72" Click="Save_Click"/>
-        <Button Content="History" HorizontalAlignment="Left" Margin="704,154,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="History_Click"/>
+        <Button Content="Save to History" HorizontalAlignment="Left" Margin="694,97,-0.4,0" VerticalAlignment="Top" Width="100" Height="25" RenderTransformOrigin="3.449,-5.72" Click="Save_Click"/>
+        <Button Content="History" HorizontalAlignment="Left" Margin="705,127,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="History_Click"/>
         <TextBox Visibility="Hidden" VerticalScrollBarVisibility="Auto" Name="Historyboard" IsReadOnly="True" HorizontalAlignment="Left" Height="311" Margin="145,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="499" RenderTransformOrigin="0.5,0.5">
             <TextBox.RenderTransform>
                 <TransformGroup>
@@ -70,13 +70,21 @@
             </TextBox.RenderTransform>
         </TextBox>
         <Button Visibility="Hidden" Name="Closehistory" Content="Close History" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="554,21,0,0" Click="Closehistory_Click"/>
-        <Button Content="Delete History" HorizontalAlignment="Left" Margin="699,197,0,0" VerticalAlignment="Top" Width="85" Height="25" RenderTransformOrigin="0.641,0.224" Click="DeleteHistory_Click"/>
-        <Button Content="Get post&#xD;&#xA; by index" HorizontalAlignment="Left" Margin="705,242,0,0" VerticalAlignment="Top" Width="74" Click="ViewIndexWindow_Click" Height="35"/>
+        <Button Content="Delete History" HorizontalAlignment="Left" Margin="699,157,0,0" VerticalAlignment="Top" Width="85" Height="25" RenderTransformOrigin="0.641,0.224" Click="DeleteHistory_Click"/>
+        <Button Content="Get post&#xD;&#xA; by index" HorizontalAlignment="Left" Margin="706,222,0,0" VerticalAlignment="Top" Width="74" Click="ViewIndexWindow_Click" Height="35"/>
         <Grid Name="IndexWindow" Visibility="Hidden" Background="DarkGray" HorizontalAlignment="Left" Height="140" Margin="300,117,0,0" VerticalAlignment="Top" Width="221">
             <TextBox x:Name="Index" HorizontalAlignment="Left" Height="23" Margin="132,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="76"/>
             <Button Content="Get Post" HorizontalAlignment="Left" Margin="77,82,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.39,-0.339" Click="GetPost_Click"/>
             <Label Content="Enter index of post: " HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="122"/>
             <Button Content="X" Margin="201,0,0,0" VerticalAlignment="Top" Height="21" RenderTransformOrigin="1.337,0.188" Click="CloseIndexWindow_Click"/>
+        </Grid>
+        <Button Content="Find posts&#xD;&#xA; by author" HorizontalAlignment="Left" Margin="706,262,0,0" VerticalAlignment="Top" Width="75" Click="Findpostsbyauthor_Click" Height="39"/>
+        <Grid Visibility="Hidden" Name="UserGrid" HorizontalAlignment="Left" Height="271" Margin="188,62,0,0" VerticalAlignment="Top" Width="457">
+            <TextBox Name="UserBoard" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="261" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="437"/>
+            <Button Name="CloseUB" Content="X" HorizontalAlignment="Left" Margin="436,0,0,0" VerticalAlignment="Top" Width="11" Height="16" Click="CloseUB_Click"/>
+            <Label Name="FindPostLabel"  Content="Insert username: " HorizontalAlignment="Left" Margin="125,87,0,0" VerticalAlignment="Top"/>
+            <TextBox Name="Postauthor" HorizontalAlignment="Left" Height="26" Margin="240,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.7,0.539"/>
+            <Button Name="FindPosts" Content="Find Posts" HorizontalAlignment="Left" Margin="197,135,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.36,-2.229" Click="FindPosts_Click"/>
         </Grid>
 
     </Grid>
